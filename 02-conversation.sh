@@ -1,5 +1,5 @@
 #!/bin/bash
-echo "Hi"
-echo "Hello"
-echo "How are you"
-echo "Good, and you?"
+echo "Ramesh:Hi Suresh"
+echo "Suresh:Hello Ramesh"
+echo "Ramesh:How are you Suresh"
+echo "Suresh:Good Ramesh and you?"
