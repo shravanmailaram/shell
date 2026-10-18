@@ -1,7 +1,7 @@
 #!/bin/bash
 
 echo "Enter your marks"
-read marks
+read -s marks
 
 #lt -> less than
 
