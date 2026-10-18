@@ -7,3 +7,8 @@ var3=Sravan
 echo "$var1+$var2"
 echo "$((var1+var2+var3))"
 
+declare -i COUNT=5 # I'm declaring as integer
+COUNT=COUNT+1
+
+echo "Count is: $COUNT"
+
