@@ -3,11 +3,6 @@
 user_id=$(id -u)
 logs_folder="/var/log/shell-practice"
 logs_file="${logs_folder}/$0.log"
-R="\e[31m"
-G="\e[32m"
-Y="\e[33m"
-N="\e[0m"
-
 
 if [ $user_id -ne 0 ]; then
     echo "Please run this script with root access"
@@ -20,10 +15,10 @@ echo "Script started execution at $(date +"%F %T")" &>> $logs_file
 
 validate(){
     if [ $1 -ne 0 ]; then
-        echo -e "${2}..${R}FAILED${N}" | tee -a $logs_file
+        echo "${2}..FAILED" | tee -a $logs_file
         exit 1
     else
-        echo -e "${2}..${G}SUCCESS${N}" | tee -a $logs_file
+        echo "${2}..SUCCESS" | tee -a $logs_file
     fi
 }
 
@@ -35,6 +30,6 @@ do
         dnf install $package -y &>> $logs_file
         validate $? "Installing ${package}"
     else
-        echo -e "${package} already installed....${Y}Skipping${N}"
+        echo "${package} already installed....Skipping"
     fi    
 done
