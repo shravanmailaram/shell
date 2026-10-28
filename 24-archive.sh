@@ -6,7 +6,7 @@ Y="\e[33m"
 N="\e[0m"
 source_dir=$1
 dest_dir=$2
-days=$(3:-14) # if the user is not passing 14 days, we will take 14 days as default
+days=${3:-14} # if the user is not passing 14 days, we will take 14 days as default
 
 usage(){
     echo -e "${R}USAGE:: $0 [SOURCE_DIR] [DEST_DIR] [days(optional, default to 14 days)]${N}"
