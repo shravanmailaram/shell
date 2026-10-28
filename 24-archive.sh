@@ -6,7 +6,7 @@ Y="\e[33m"
 N="\e[0m"
 source_dir=$1
 dest_dir=$2
-days=$(3:-14)
+days=$(3:-14) # if the user is not passing 14 days, we will take 14 days as default
 
 usage(){
     echo -e "${R}USAGE:: $0 [SOURCE_DIR] [DEST_DIR] [days(optional, default to 14 days)]${N}"
@@ -28,30 +28,30 @@ if [ ! -d "$dest_dir" ]; then
     exit 1
 fi
 
-echo "Scanning files older than $days in $source_dir"
-files_to_archive=$(find $source_dir -name "*.log" -type f -mtime +$days)
+# echo "Scanning files older than $days in $source_dir"
+# files_to_archive=$(find $source_dir -name "*.log" -type f -mtime +$days)
 
-if [ -z "$files_to_archive" ]; then
-    echo "No log files found older than $days"
-    exit 0
-fi
+# if [ -z "$files_to_archive" ]; then
+#     echo "No log files found older than $days"
+#     exit 0
+# fi
 
-timestamp=$(date +%Y-%m-%d-%H-%M-%S)
+# timestamp=$(date +%Y-%m-%d-%H-%M-%S)
 
-file_name="$dest_dir/logs-$timestamp.tar.gz"
+# file_name="$dest_dir/logs-$timestamp.tar.gz"
 
-tar -czf $file_name $files_to_archive
+# tar -czf $file_name $files_to_archive
 
-if [ $? -ne 0 ]; then
-    echo "logs archival has failed"
-    exit 1
-else
-    echo "logs are archived: $file_name"
-    while IFS=read-r line
-    do
-    echo "File is going to be deleted: $line"
-    rm -f $line
-    echo "File deleted: $line"
-    done <<< "$files_to_archive"
-fi
+# if [ $? -ne 0 ]; then
+#     echo "logs archival has failed"
+#     exit 1
+# else
+#     echo "logs are archived: $file_name"
+#     while IFS=read-r line
+#     do
+#     echo "File is going to be deleted: $line"
+#     rm -f $line
+#     echo "File deleted: $line"
+#     done <<< "$files_to_archive"
+# fi
 
